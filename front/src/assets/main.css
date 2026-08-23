@@ -1,0 +1,209 @@
+@layer primeflex, primevue, app;
+
+@layer app {
+  :root {
+    --residenz-cream: #faf7f2;
+    --residenz-sand: #ece3d6;
+    --residenz-forest: #2f4739;
+    --residenz-moss: #5c7a5e;
+    --residenz-gold: #b08d57;
+    --residenz-ink: #2a2622;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--residenz-cream);
+    color: var(--residenz-ink);
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  h1,
+  h2,
+  h3,
+  .serif {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .residenz-app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .residenz-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--residenz-sand);
+  }
+
+  .residenz-brand {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.6rem;
+    color: var(--residenz-forest);
+    text-decoration: none;
+    line-height: 1.1;
+  }
+
+  .residenz-brand small {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--residenz-gold);
+  }
+
+  .residenz-hero {
+    position: relative;
+    min-height: 62vh;
+    display: flex;
+    align-items: center;
+    background:
+      linear-gradient(rgba(47, 71, 57, 0.55), rgba(47, 71, 57, 0.65)),
+      radial-gradient(circle at 30% 20%, #6b8f6e, #2f4739 70%);
+    color: #fff;
+    text-align: center;
+    padding: 4rem 1.5rem;
+  }
+
+  .residenz-hero h1 {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    margin: 0 0 1rem;
+  }
+
+  .residenz-hero p {
+    max-width: 46rem;
+    margin: 0 auto 2rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    opacity: 0.94;
+  }
+
+  .section {
+    padding: 4rem 1.5rem;
+    max-width: 1180px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 0.4rem;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    color: var(--residenz-forest);
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: var(--residenz-moss);
+    margin-bottom: 2.5rem;
+    font-style: italic;
+  }
+
+  .room-card {
+    background: #fff;
+    border: 1px solid var(--residenz-sand);
+    border-radius: 14px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .room-card:not(.room-card--disabled):hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 34px rgba(47, 71, 57, 0.14);
+  }
+
+  .room-card--disabled {
+    filter: grayscale(0.85);
+    opacity: 0.62;
+  }
+
+  .room-card__image {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: var(--residenz-sand);
+    overflow: hidden;
+  }
+
+  .room-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .room-card__badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+  }
+
+  .room-card__body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+  }
+
+  .room-card__price {
+    font-size: 1.35rem;
+    color: var(--residenz-forest);
+    font-weight: 600;
+  }
+
+  .room-card__price span {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--residenz-moss);
+  }
+
+  .shared-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--residenz-sand);
+    color: var(--residenz-forest);
+    border-radius: 999px;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.82rem;
+  }
+
+  .residenz-footer {
+    margin-top: auto;
+    background: var(--residenz-forest);
+    color: #e9e3d8;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .residenz-footer a {
+    color: var(--residenz-sand);
+  }
+
+  .auth-shell {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+  }
+}
