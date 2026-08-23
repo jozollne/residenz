@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useToast } from 'primevue/usetoast'
 import Dialog from 'primevue/dialog'
@@ -28,6 +28,17 @@ const dates = ref<Date[] | null>(null)
 const occupied = ref<OccupiedRange[]>([])
 const submitting = ref(false)
 const errorMessage = ref<string | null>(null)
+const isMobile = ref(false)
+
+const mobileQuery = window.matchMedia('(max-width: 640px)')
+const syncIsMobile = () => (isMobile.value = mobileQuery.matches)
+
+onMounted(() => {
+  syncIsMobile()
+  mobileQuery.addEventListener('change', syncIsMobile)
+})
+
+onUnmounted(() => mobileQuery.removeEventListener('change', syncIsMobile))
 
 const form = ref({
   firstName: '',
@@ -175,7 +186,8 @@ async function submit() {
     v-model:visible="dialogVisible"
     modal
     :dismissable-mask="true"
-    :style="{ width: '46rem', maxWidth: '95vw' }"
+    :style="{ width: '46rem' }"
+    :breakpoints="{ '960px': '90vw', '640px': '96vw' }"
     :header="room ? t('booking.title', { room: room.name }) : ''"
   >
     <div v-if="room" class="flex flex-column gap-3">
@@ -187,7 +199,8 @@ async function submit() {
           :manual-input="false"
           :min-date="new Date()"
           :disabled-dates="disabledDates"
-          :number-of-months="2"
+          :number-of-months="isMobile ? 1 : 2"
+          :touch-u-i="isMobile"
           date-format="dd.mm.yy"
           show-icon
           fluid

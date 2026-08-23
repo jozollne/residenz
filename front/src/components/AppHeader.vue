@@ -31,14 +31,13 @@ function logout() {
 
 <template>
   <header class="residenz-header">
-    <div class="flex align-items-center justify-content-between gap-3 px-3 py-2 mx-auto"
-         style="max-width: 1180px">
+    <div class="residenz-header__inner">
       <RouterLink to="/" class="residenz-brand">
         {{ t('app.title') }}
         <small>{{ t('app.subtitle') }}</small>
       </RouterLink>
 
-      <nav class="flex align-items-center gap-2">
+      <nav class="residenz-nav">
         <SelectButton
           v-model="currentLocale"
           :options="localeOptions"
@@ -52,19 +51,34 @@ function logout() {
         <template v-if="auth.token">
           <Button
             v-if="isAdmin"
+            v-tooltip.bottom="t('nav.admin')"
             :label="t('nav.admin')"
             icon="pi pi-cog"
             text
+            class="residenz-nav__button"
+            :aria-label="t('nav.admin')"
             @click="router.push({ name: 'admin' })"
           />
-          <Button :label="t('nav.logout')" icon="pi pi-sign-out" text severity="secondary" @click="logout" />
+          <Button
+            v-tooltip.bottom="t('nav.logout')"
+            :label="t('nav.logout')"
+            icon="pi pi-sign-out"
+            text
+            severity="secondary"
+            class="residenz-nav__button"
+            :aria-label="t('nav.logout')"
+            @click="logout"
+          />
         </template>
         <Button
           v-else
+          v-tooltip.bottom="t('nav.login')"
           :label="t('nav.login')"
           icon="pi pi-user"
           text
           severity="secondary"
+          class="residenz-nav__button"
+          :aria-label="t('nav.login')"
           @click="router.push({ name: 'login' })"
         />
       </nav>

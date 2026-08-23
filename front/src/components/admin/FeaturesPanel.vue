@@ -104,7 +104,8 @@ function remove(feature: Feature) {
       v-model:visible="dialogVisible"
       modal
       :header="editingId ? t('admin.edit') : t('admin.new')"
-      :style="{ width: '30rem', maxWidth: '95vw' }"
+      :style="{ width: '30rem' }"
+      :breakpoints="{ '640px': '96vw' }"
     >
       <div class="flex flex-column gap-3">
         <div>

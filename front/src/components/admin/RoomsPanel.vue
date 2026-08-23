@@ -176,7 +176,8 @@ function remove(room: Room) {
     v-model:visible="dialogVisible"
     modal
     :header="editingId ? t('admin.edit') : t('admin.new')"
-    :style="{ width: '44rem', maxWidth: '95vw' }"
+    :style="{ width: '44rem' }"
+    :breakpoints="{ '960px': '90vw', '640px': '96vw' }"
   >
     <div class="grid">
       <div class="col-12 md:col-8">
