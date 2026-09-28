@@ -12,7 +12,7 @@ export default {
     logout: 'Abmelden',
   },
   hero: {
-    headline: 'Willkommen in der Residenz Andreew',
+    headline: 'Willkommen in der Residenz Erlenhöhe',
     text: 'Ein Ort der Ruhe: liebevoll eingerichtete Zimmer, viel Grün und die Gelassenheit eines alten Landhauses. Ideal für Monteure, Reisende und alle, die für eine Weile bleiben möchten.',
     cta: 'Zimmer entdecken',
   },
